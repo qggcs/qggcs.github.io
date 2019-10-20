@@ -51,18 +51,18 @@
 </script>
 
   <meta name="description" content="背景​    今天用c++写BST的insert插入方法后准备测试，准备了如下测试代码: 12345678BSTree&amp;lt;int&amp;gt; s(20);	s.insert(25);	s.insert(10);	s.insert(17);	s.insert(12);	s.insert(23);	s.insert(5);	s.insert(30);  预想中树的结构应该是这样的:      20">
-<meta name="keywords" content="c++ 数据结构">
+<meta name="keywords" content="c++,数据结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="指针传递和指针引用传递的区别">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;20&#x2F;%E6%8C%87%E9%92%88%E4%BC%A0%E9%80%92%E5%92%8C%E6%8C%87%E9%92%88%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92%E7%9A%84%E5%8C%BA%E5%88%AB&#x2F;index.html">
 <meta property="og:site_name" content="谭籽溢的万事屋">
 <meta property="og:description" content="背景​    今天用c++写BST的insert插入方法后准备测试，准备了如下测试代码: 12345678BSTree&amp;lt;int&amp;gt; s(20);	s.insert(25);	s.insert(10);	s.insert(17);	s.insert(12);	s.insert(23);	s.insert(5);	s.insert(30);  预想中树的结构应该是这样的:      20">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;16898143-68f030e9924b37df.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;format&#x2F;webp">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;16898143-68f030e9924b37df.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;16898143-ab0b4cd447bb12c0.png">
-<meta property="og:updated_time" content="2019-10-20T13:38:00.846Z">
+<meta property="og:updated_time" content="2019-10-20T13:43:00.733Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;16898143-68f030e9924b37df.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;format&#x2F;webp">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;16898143-68f030e9924b37df.png">
   <link rel="canonical" href="http://yoursite.com/2019/10/20/%E6%8C%87%E9%92%88%E4%BC%A0%E9%80%92%E5%92%8C%E6%8C%87%E9%92%88%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92%E7%9A%84%E5%8C%BA%E5%88%AB/">
 
 
@@ -202,7 +202,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2019-10-20 21:09:54 / Modified: 21:38:00" itemprop="dateCreated datePublished" datetime="2019-10-20T21:09:54+08:00">2019-10-20</time>
+              <time title="Created: 2019-10-20 21:09:54 / Modified: 21:43:00" itemprop="dateCreated datePublished" datetime="2019-10-20T21:09:54+08:00">2019-10-20</time>
             </span>
 
           <br>
@@ -239,7 +239,7 @@
  /  \    /  \ 
 5   17  23     30
     /
-   12</code></pre><h4 id="然而遍历以后的结果："><a href="#然而遍历以后的结果：" class="headerlink" title="然而遍历以后的结果："></a>然而遍历以后的结果：</h4><p><img src="https://upload-images.jianshu.io/upload_images/16898143-68f030e9924b37df.png?imageMogr2/auto-orient/strip%7CimageView2/2/format/webp" alt="前序遍历结果" title="遍历结果"></p>
+   12</code></pre><h4 id="然而遍历以后的结果："><a href="#然而遍历以后的结果：" class="headerlink" title="然而遍历以后的结果："></a>然而遍历以后的结果：</h4><p><img src="https://upload-images.jianshu.io/upload_images/16898143-68f030e9924b37df.png" alt="前序遍历结果"></p>
 <h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><h4 id="经过debug后，问题出自这："><a href="#经过debug后，问题出自这：" class="headerlink" title="经过debug后，问题出自这："></a>经过debug后，问题出自这：</h4><p>​    参数列表的参数传递的不应该为指针，而应改为对指针的引用和二级指针</p>
 <blockquote>
 <p>指针传递参数本质上是值传递的方式，它所传递的是一个地址值。值传递过程中，被调函数的形式参数作为被调函数的局部变量处理，即在栈中开辟了内存空间以存放由主调函数放进来的实参的值，从而成为了实参的一个副本。值传递的特点是被调函数对形式参数的任何操作都是作为局部变量进行，不会影响主调函数的实参变量的值。（这里是在说实参指针本身的地址值不会变）</p>
@@ -259,7 +259,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/c-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># c++ 数据结构</a>
+              <a href="/tags/c/" rel="tag"># c++</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
           </div>
 
         
@@ -333,7 +334,7 @@
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
