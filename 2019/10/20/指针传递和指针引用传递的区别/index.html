@@ -50,16 +50,20 @@
   };
 </script>
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="背景​    今天用c++写BST的insert插入方法后准备测试，准备了如下测试代码: 12345678BSTree&amp;lt;int&amp;gt; s(20);	s.insert(25);	s.insert(10);	s.insert(17);	s.insert(12);	s.insert(23);	s.insert(5);	s.insert(30);  预想中树的结构应该是这样的:      20">
+<meta name="keywords" content="c++ 数据结构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;17&#x2F;hello-world&#x2F;index.html">
+<meta property="og:title" content="指针传递和指针引用传递的区别">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;20&#x2F;%E6%8C%87%E9%92%88%E4%BC%A0%E9%80%92%E5%92%8C%E6%8C%87%E9%92%88%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92%E7%9A%84%E5%8C%BA%E5%88%AB&#x2F;index.html">
 <meta property="og:site_name" content="谭籽溢的万事屋">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="背景​    今天用c++写BST的insert插入方法后准备测试，准备了如下测试代码: 12345678BSTree&amp;lt;int&amp;gt; s(20);	s.insert(25);	s.insert(10);	s.insert(17);	s.insert(12);	s.insert(23);	s.insert(5);	s.insert(30);  预想中树的结构应该是这样的:      20">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-17T12:13:20.717Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;16898143-68f030e9924b37df.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;format&#x2F;webp">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;16898143-ab0b4cd447bb12c0.png">
+<meta property="og:updated_time" content="2019-10-20T13:38:00.846Z">
 <meta name="twitter:card" content="summary">
-  <link rel="canonical" href="http://yoursite.com/2019/10/17/hello-world/">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;16898143-68f030e9924b37df.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;format&#x2F;webp">
+  <link rel="canonical" href="http://yoursite.com/2019/10/20/%E6%8C%87%E9%92%88%E4%BC%A0%E9%80%92%E5%92%8C%E6%8C%87%E9%92%88%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92%E7%9A%84%E5%8C%BA%E5%88%AB/">
 
 
 <script id="page-configurations">
@@ -73,7 +77,7 @@
   };
 </script>
 
-  <title>Hello World | 谭籽溢的万事屋</title>
+  <title>指针传递和指针引用传递的区别 | 谭籽溢的万事屋</title>
   
 
 
@@ -174,7 +178,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/17/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/20/%E6%8C%87%E9%92%88%E4%BC%A0%E9%80%92%E5%92%8C%E6%8C%87%E9%92%88%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92%E7%9A%84%E5%8C%BA%E5%88%AB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -187,7 +191,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hello World
+          指针传递和指针引用传递的区别
         </h1>
 
         <div class="post-meta">
@@ -196,8 +200,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2019-10-17 20:13:20" itemprop="dateCreated datePublished" datetime="2019-10-17T20:13:20+08:00">2019-10-17</time>
+              <time title="Created: 2019-10-20 21:09:54 / Modified: 21:38:00" itemprop="dateCreated datePublished" datetime="2019-10-20T21:09:54+08:00">2019-10-20</time>
             </span>
 
           <br>
@@ -206,7 +211,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>357</span>
+              <span>858</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -225,19 +230,26 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>​    今天用c++写BST的insert插入方法后准备测试，准备了如下测试代码:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">BSTree&lt;<span class="keyword">int</span>&gt; s(<span class="number">20</span>);</span><br><span class="line">	s.insert(<span class="number">25</span>);</span><br><span class="line">	s.insert(<span class="number">10</span>);</span><br><span class="line">	s.insert(<span class="number">17</span>);</span><br><span class="line">	s.insert(<span class="number">12</span>);</span><br><span class="line">	s.insert(<span class="number">23</span>);</span><br><span class="line">	s.insert(<span class="number">5</span>);</span><br><span class="line">	s.insert(<span class="number">30</span>);</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h4 id="预想中树的结构应该是这样的"><a href="#预想中树的结构应该是这样的" class="headerlink" title="预想中树的结构应该是这样的:"></a>预想中树的结构应该是这样的:</h4><pre><code>      20
+    /    \
+  10      25  
+ /  \    /  \ 
+5   17  23     30
+    /
+   12</code></pre><h4 id="然而遍历以后的结果："><a href="#然而遍历以后的结果：" class="headerlink" title="然而遍历以后的结果："></a>然而遍历以后的结果：</h4><p><img src="https://upload-images.jianshu.io/upload_images/16898143-68f030e9924b37df.png?imageMogr2/auto-orient/strip%7CimageView2/2/format/webp" alt="前序遍历结果" title="遍历结果"></p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><h4 id="经过debug后，问题出自这："><a href="#经过debug后，问题出自这：" class="headerlink" title="经过debug后，问题出自这："></a>经过debug后，问题出自这：</h4><p>​    参数列表的参数传递的不应该为指针，而应改为对指针的引用和二级指针</p>
+<blockquote>
+<p>指针传递参数本质上是值传递的方式，它所传递的是一个地址值。值传递过程中，被调函数的形式参数作为被调函数的局部变量处理，即在栈中开辟了内存空间以存放由主调函数放进来的实参的值，从而成为了实参的一个副本。值传递的特点是被调函数对形式参数的任何操作都是作为局部变量进行，不会影响主调函数的实参变量的值。（这里是在说实参指针本身的地址值不会变）</p>
+<p>而在引用传递过程中，被调函数的形式参数虽然也作为局部变量在栈中开辟了内存空间，但是这时存放的是由主调函数放进来的实参变量的地址（int &amp;a的形式）。被调函数对形参的任何操作都被处理成间接寻址，即通过栈中存放的地址访问主调函数中的实参变量。正因为如此，被调函数对形参做的任何操作都影响了主调函数中的实参变量。</p>
+</blockquote>
+<p>​    总结来说，要实现两个函数间的pass by reference，应该使用二级指针或者对指针的引用</p>
+<p>按照资料的说明修改代码:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">bool</span> <span class="title">BSTree</span>&lt;T&gt;:</span>:insert(<span class="keyword">const</span> T&amp; x)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> insert(x, root);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">bool</span> <span class="title">BSTree</span>&lt;T&gt;:</span>:insert(<span class="keyword">const</span> T&amp; x, BSTNode&lt;T&gt;* &amp;current)</span><br><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/16898143-ab0b4cd447bb12c0.png" alt="成功运行"></p>
 
     </div>
 
@@ -246,19 +258,22 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/c-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># c++ 数据结构</a>
+          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
+                <a href="/2019/10/17/my-first-blog/" rel="next" title="'my-first-blog'">
+                  <i class="fa fa-chevron-left"></i> 'my-first-blog'
+                </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2019/10/17/my-first-blog/" rel="prev" title="'my-first-blog'">
-                  'my-first-blog' <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
       </footer>
@@ -297,7 +312,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#预想中树的结构应该是这样的"><span class="nav-number">1.0.1.</span> <span class="nav-text">预想中树的结构应该是这样的:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#然而遍历以后的结果："><span class="nav-number">1.0.2.</span> <span class="nav-text">然而遍历以后的结果：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结果"><span class="nav-number">2.</span> <span class="nav-text">结果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#经过debug后，问题出自这："><span class="nav-number">2.0.1.</span> <span class="nav-text">经过debug后，问题出自这：</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
