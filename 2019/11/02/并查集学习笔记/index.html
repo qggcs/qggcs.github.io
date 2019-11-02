@@ -50,16 +50,16 @@
   };
 </script>
 
-  <meta name="description" content="背景背景​    最近在看陈越姥姥的数据结构，学习到并查集这个数据结构，大二上课的时候老师讲到这块直接跳过了(说考试不考，因为平时了解一些ACM或者算法题都有对并查集的考察，所以这次打算好好学习一下(笑) 并查集​    并查集，主要解决不相交集合的并操作，查询某两个元素是否处于同一集合。有一部分数学问题其实都可以抽象为对并查集的一系列操作。 ​    比如比较经典的电脑连通问题：  给定计算机N">
+  <meta name="description" content="背景​    最近在看陈越姥姥的数据结构，学习到并查集这个数据结构，大二上课的时候老师讲到这块直接跳过了(说考试不考，因为平时了解一些ACM或者算法题都有对并查集的考察，所以这次打算好好学习一下(笑) 并查集​    并查集，主要解决不相交集合的并操作，查询某两个元素是否处于同一集合。有一部分数学问题其实都可以抽象为对并查集的一系列操作。 ​    比如比较经典的电脑连通问题：  给定计算机N台，">
 <meta name="keywords" content="并查集">
 <meta property="og:type" content="article">
-<meta property="og:title" content="并查集学习笔记">
+<meta property="og:title" content="并查集">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;02&#x2F;%E5%B9%B6%E6%9F%A5%E9%9B%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0&#x2F;index.html">
 <meta property="og:site_name" content="谭籽溢的万事屋">
-<meta property="og:description" content="背景背景​    最近在看陈越姥姥的数据结构，学习到并查集这个数据结构，大二上课的时候老师讲到这块直接跳过了(说考试不考，因为平时了解一些ACM或者算法题都有对并查集的考察，所以这次打算好好学习一下(笑) 并查集​    并查集，主要解决不相交集合的并操作，查询某两个元素是否处于同一集合。有一部分数学问题其实都可以抽象为对并查集的一系列操作。 ​    比如比较经典的电脑连通问题：  给定计算机N">
+<meta property="og:description" content="背景​    最近在看陈越姥姥的数据结构，学习到并查集这个数据结构，大二上课的时候老师讲到这块直接跳过了(说考试不考，因为平时了解一些ACM或者算法题都有对并查集的考察，所以这次打算好好学习一下(笑) 并查集​    并查集，主要解决不相交集合的并操作，查询某两个元素是否处于同一集合。有一部分数学问题其实都可以抽象为对并查集的一系列操作。 ​    比如比较经典的电脑连通问题：  给定计算机N台，">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;11&#x2F;02&#x2F;1hxbiE5lwozNf23.jpg">
-<meta property="og:updated_time" content="2019-11-02T07:22:35.566Z">
+<meta property="og:updated_time" content="2019-11-02T07:30:28.903Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;11&#x2F;02&#x2F;1hxbiE5lwozNf23.jpg">
   <link rel="canonical" href="http://yoursite.com/2019/11/02/%E5%B9%B6%E6%9F%A5%E9%9B%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
@@ -76,7 +76,7 @@
   };
 </script>
 
-  <title>并查集学习笔记 | 谭籽溢的万事屋</title>
+  <title>并查集 | 谭籽溢的万事屋</title>
   
 
 
@@ -190,7 +190,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          并查集学习笔记
+          并查集
         </h1>
 
         <div class="post-meta">
@@ -201,7 +201,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2019-11-02 13:58:21 / Modified: 15:22:35" itemprop="dateCreated datePublished" datetime="2019-11-02T13:58:21+08:00">2019-11-02</time>
+              <time title="Created: 2019-11-02 13:58:21 / Modified: 15:30:28" itemprop="dateCreated datePublished" datetime="2019-11-02T13:58:21+08:00">2019-11-02</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -240,7 +240,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><h2 id="背景-1"><a href="#背景-1" class="headerlink" title="背景"></a>背景</h2><p>​    最近在看陈越姥姥的数据结构，学习到并查集这个数据结构，大二上课的时候老师讲到这块直接跳过了(说考试不考，因为平时了解一些ACM或者算法题都有对并查集的考察，所以这次打算好好学习一下(笑)</p>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>​    最近在看陈越姥姥的数据结构，学习到并查集这个数据结构，大二上课的时候老师讲到这块直接跳过了(说考试不考，因为平时了解一些ACM或者算法题都有对并查集的考察，所以这次打算好好学习一下(笑)</p>
 <h2 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h2><p>​    并查集，主要解决不相交集合的并操作，查询某两个元素是否处于同一集合。有一部分数学问题其实都可以抽象为对并查集的一系列操作。</p>
 <p>​    比如比较经典的电脑连通问题：</p>
 <blockquote>
@@ -343,7 +343,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#背景-1"><span class="nav-number">2.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并查集"><span class="nav-number">3.</span> <span class="nav-text">并查集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并查集的表示和主要操作"><span class="nav-number">4.</span> <span class="nav-text">并查集的表示和主要操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并查集的优化"><span class="nav-number">5.</span> <span class="nav-text">并查集的优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、表示的优化"><span class="nav-number">5.1.</span> <span class="nav-text">1、表示的优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、Find函数的优化-路径压缩"><span class="nav-number">5.2.</span> <span class="nav-text">2、Find函数的优化(路径压缩)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、Union函数的优化-按秩归并"><span class="nav-number">5.3.</span> <span class="nav-text">3、Union函数的优化(按秩归并)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">6.</span> <span class="nav-text">最后</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并查集"><span class="nav-number">2.</span> <span class="nav-text">并查集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并查集的表示和主要操作"><span class="nav-number">3.</span> <span class="nav-text">并查集的表示和主要操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并查集的优化"><span class="nav-number">4.</span> <span class="nav-text">并查集的优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、表示的优化"><span class="nav-number">4.1.</span> <span class="nav-text">1、表示的优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、Find函数的优化-路径压缩"><span class="nav-number">4.2.</span> <span class="nav-text">2、Find函数的优化(路径压缩)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、Union函数的优化-按秩归并"><span class="nav-number">4.3.</span> <span class="nav-text">3、Union函数的优化(按秩归并)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">5.</span> <span class="nav-text">最后</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

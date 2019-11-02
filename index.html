@@ -187,7 +187,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2019/11/02/%E5%B9%B6%E6%9F%A5%E9%9B%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">并查集学习笔记</a>
+            <a href="/2019/11/02/%E5%B9%B6%E6%9F%A5%E9%9B%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">并查集</a>
         </h1>
 
         <div class="post-meta">
@@ -198,7 +198,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2019-11-02 13:58:21 / Modified: 15:22:35" itemprop="dateCreated datePublished" datetime="2019-11-02T13:58:21+08:00">2019-11-02</time>
+              <time title="Created: 2019-11-02 13:58:21 / Modified: 15:30:28" itemprop="dateCreated datePublished" datetime="2019-11-02T13:58:21+08:00">2019-11-02</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -237,7 +237,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><h2 id="背景-1"><a href="#背景-1" class="headerlink" title="背景"></a>背景</h2><p>​    最近在看陈越姥姥的数据结构，学习到并查集这个数据结构，大二上课的时候老师讲到这块直接跳过了(说考试不考，因为平时了解一些ACM或者算法题都有对并查集的考察，所以这次打算好好学习一下(笑)</p>
+          <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>​    最近在看陈越姥姥的数据结构，学习到并查集这个数据结构，大二上课的时候老师讲到这块直接跳过了(说考试不考，因为平时了解一些ACM或者算法题都有对并查集的考察，所以这次打算好好学习一下(笑)</p>
 <h2 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h2><p>​    并查集，主要解决不相交集合的并操作，查询某两个元素是否处于同一集合。有一部分数学问题其实都可以抽象为对并查集的一系列操作。</p>
 <p>​    比如比较经典的电脑连通问题：</p>
 <blockquote>
@@ -328,7 +328,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-02 14:02:34" itemprop="dateModified" datetime="2019-11-02T14:02:34+08:00">2019-11-02</time>
+                <time title="Modified: 2019-11-02 15:30:38" itemprop="dateModified" datetime="2019-11-02T15:30:38+08:00">2019-11-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -376,7 +376,7 @@
  /  \    /  \ 
 5   17  23     30
     /
-   12</code></pre><h4 id="然而遍历以后的结果："><a href="#然而遍历以后的结果：" class="headerlink" title="然而遍历以后的结果："></a>然而遍历以后的结果：</h4><p><img src="https://upload-images.jianshu.io/upload_images/16898143-68f030e9924b37df.png" alt="前序遍历结果"></p>
+   12</code></pre><h4 id="然而遍历以后的结果："><a href="#然而遍历以后的结果：" class="headerlink" title="然而遍历以后的结果："></a>然而遍历以后的结果：</h4><p><img src="https://i.loli.net/2019/11/02/pz8uHRlkeWc92nA.png" alt="二叉树遍历错误结果.png"></p>
 <h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><h4 id="经过debug后，问题出自这："><a href="#经过debug后，问题出自这：" class="headerlink" title="经过debug后，问题出自这："></a>经过debug后，问题出自这：</h4><p>​    参数列表的参数传递的不应该为指针，而应改为对指针的引用和二级指针</p>
 <blockquote>
 <p>指针传递参数本质上是值传递的方式，它所传递的是一个地址值。值传递过程中，被调函数的形式参数作为被调函数的局部变量处理，即在栈中开辟了内存空间以存放由主调函数放进来的实参的值，从而成为了实参的一个副本。值传递的特点是被调函数对形式参数的任何操作都是作为局部变量进行，不会影响主调函数的实参变量的值。（这里是在说实参指针本身的地址值不会变）</p>
@@ -386,7 +386,7 @@
 <p>按照资料的说明修改代码:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">bool</span> <span class="title">BSTree</span>&lt;T&gt;:</span>:insert(<span class="keyword">const</span> T&amp; x)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> insert(x, root);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">bool</span> <span class="title">BSTree</span>&lt;T&gt;:</span>:insert(<span class="keyword">const</span> T&amp; x, BSTNode&lt;T&gt;* &amp;current)</span><br><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://upload-images.jianshu.io/upload_images/16898143-ab0b4cd447bb12c0.png" alt="成功运行"></p>
+<p><img src="https://i.loli.net/2019/11/02/pqPNKDT4ZQgt9Ed.png" alt="二叉树遍历正确结果.png"></p>
 
       
     </div>

@@ -58,11 +58,11 @@
 <meta property="og:site_name" content="谭籽溢的万事屋">
 <meta property="og:description" content="背景​    今天用c++写BST的insert插入方法后准备测试，准备了如下测试代码: 12345678BSTree&amp;lt;int&amp;gt; s(20);	s.insert(25);	s.insert(10);	s.insert(17);	s.insert(12);	s.insert(23);	s.insert(5);	s.insert(30);  预想中树的结构应该是这样的:      20">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;16898143-68f030e9924b37df.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;16898143-ab0b4cd447bb12c0.png">
-<meta property="og:updated_time" content="2019-11-02T06:02:34.316Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;11&#x2F;02&#x2F;pz8uHRlkeWc92nA.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;11&#x2F;02&#x2F;pqPNKDT4ZQgt9Ed.png">
+<meta property="og:updated_time" content="2019-11-02T07:30:38.024Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;16898143-68f030e9924b37df.png">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;11&#x2F;02&#x2F;pz8uHRlkeWc92nA.png">
   <link rel="canonical" href="http://yoursite.com/2019/10/20/%E6%8C%87%E9%92%88%E4%BC%A0%E9%80%92%E5%92%8C%E6%8C%87%E9%92%88%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92%E7%9A%84%E5%8C%BA%E5%88%AB/">
 
 
@@ -208,7 +208,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-02 14:02:34" itemprop="dateModified" datetime="2019-11-02T14:02:34+08:00">2019-11-02</time>
+                <time title="Modified: 2019-11-02 15:30:38" itemprop="dateModified" datetime="2019-11-02T15:30:38+08:00">2019-11-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -256,7 +256,7 @@
  /  \    /  \ 
 5   17  23     30
     /
-   12</code></pre><h4 id="然而遍历以后的结果："><a href="#然而遍历以后的结果：" class="headerlink" title="然而遍历以后的结果："></a>然而遍历以后的结果：</h4><p><img src="https://upload-images.jianshu.io/upload_images/16898143-68f030e9924b37df.png" alt="前序遍历结果"></p>
+   12</code></pre><h4 id="然而遍历以后的结果："><a href="#然而遍历以后的结果：" class="headerlink" title="然而遍历以后的结果："></a>然而遍历以后的结果：</h4><p><img src="https://i.loli.net/2019/11/02/pz8uHRlkeWc92nA.png" alt="二叉树遍历错误结果.png"></p>
 <h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><h4 id="经过debug后，问题出自这："><a href="#经过debug后，问题出自这：" class="headerlink" title="经过debug后，问题出自这："></a>经过debug后，问题出自这：</h4><p>​    参数列表的参数传递的不应该为指针，而应改为对指针的引用和二级指针</p>
 <blockquote>
 <p>指针传递参数本质上是值传递的方式，它所传递的是一个地址值。值传递过程中，被调函数的形式参数作为被调函数的局部变量处理，即在栈中开辟了内存空间以存放由主调函数放进来的实参的值，从而成为了实参的一个副本。值传递的特点是被调函数对形式参数的任何操作都是作为局部变量进行，不会影响主调函数的实参变量的值。（这里是在说实参指针本身的地址值不会变）</p>
@@ -266,7 +266,7 @@
 <p>按照资料的说明修改代码:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">bool</span> <span class="title">BSTree</span>&lt;T&gt;:</span>:insert(<span class="keyword">const</span> T&amp; x)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> insert(x, root);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">bool</span> <span class="title">BSTree</span>&lt;T&gt;:</span>:insert(<span class="keyword">const</span> T&amp; x, BSTNode&lt;T&gt;* &amp;current)</span><br><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://upload-images.jianshu.io/upload_images/16898143-ab0b4cd447bb12c0.png" alt="成功运行"></p>
+<p><img src="https://i.loli.net/2019/11/02/pqPNKDT4ZQgt9Ed.png" alt="二叉树遍历正确结果.png"></p>
 
     </div>
 
@@ -292,8 +292,8 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2019/11/02/%E5%B9%B6%E6%9F%A5%E9%9B%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="并查集学习笔记">
-                  并查集学习笔记 <i class="fa fa-chevron-right"></i>
+                <a href="/2019/11/02/%E5%B9%B6%E6%9F%A5%E9%9B%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="并查集">
+                  并查集 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
