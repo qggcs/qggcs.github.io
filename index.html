@@ -190,6 +190,106 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/%E6%89%BE%E5%87%BA%E5%94%AF%E4%B8%80%E6%88%90%E5%AF%B9%E7%9A%84%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="人云亦云刘春风">
+      <meta itemprop="description" content="不想熬夜">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="谭籽溢的万事屋">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/08/%E6%89%BE%E5%87%BA%E5%94%AF%E4%B8%80%E6%88%90%E5%AF%B9%E7%9A%84%E6%95%B0/" class="post-title-link" itemprop="url">找出唯一成对的数</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-11-08 17:55:31 / Modified: 18:21:05" itemprop="dateCreated datePublished" datetime="2019-11-08T17:55:31+08:00">2019-11-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index">
+                    <span itemprop="name">算法设计</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>1.9k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>2 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>​    1—1000这1000个数放在大小为1001的数组中，只有唯一的一个元素值重复，其他均只出现一次。每个数组元素只能访问一次，设计一个算法，将这个重复的元素找出来。不用辅助存储空间，能否设计一个算法实现？</p>
+<h2 id="求解过程"><a href="#求解过程" class="headerlink" title="求解过程"></a>求解过程</h2><p>​    很自然地想到穷举法,嵌套循环就能很轻易地找出来,但显然O(n<sup>2</sup>)并不是最优解.有没有一种方法可以优化时间复杂度呢?答案当然是有的.</p>
+<p>​    我们知道异或运算a^b=1,仅当a=b,所以利用异或运算就能轻易消去重复的数,但是根据题目描述,只有一对数重复,直接异或肯定是行不通的.所以,我们需要让凑出这样一个值,使得除了重复数k之外的所有数都成对,重复数k有3个:</p>
+<p>​        (1^2^…^k^…^k^…^1000)^(1^2^…^k^…^1000)=k</p>
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>​    利用异或的特性,实现代码就容易多了:</p>
+<h3 id="思路1"><a href="#思路1" class="headerlink" title="思路1:"></a>思路1:</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> random(x) (rand()%(x))</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//构造题干中的数组</span></span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">auto</span> size = <span class="number">1001</span>;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(size);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> i = <span class="number">0</span>; i &lt; v.size() - <span class="number">1</span>; ++i)</span><br><span class="line">		v[i] = i + <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">	srand(time(<span class="literal">nullptr</span>));</span><br><span class="line">	v[size - <span class="number">1</span>] = random(<span class="number">11</span>);</span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">auto</span> index = random(<span class="number">11</span>);</span><br><span class="line">	swap(v[index], v[v.size()<span class="number">-1</span>]);</span><br><span class="line">    <span class="comment">//打印该数组,方便查看</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span>&amp;x : v)</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; x &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    </span><br><span class="line">	<span class="comment">//寻找成对的数的过程</span></span><br><span class="line">	<span class="keyword">auto</span> opr = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> i = <span class="number">1</span>; i &lt;= v.size()<span class="number">-1</span>; ++i)</span><br><span class="line">		opr = opr ^ i;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> i : v)</span><br><span class="line">		opr = opr ^ i;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; opr &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="思路2"><a href="#思路2" class="headerlink" title="思路2:"></a>思路2:</h3><p>​    当然,这道题的限制十分明显,即数的范围已经确定,而其中只存在一个重复的数,我们可以利用数组求和,再减去1-1000的和,即可求出重复的数:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,s1=<span class="number">0</span>,s2=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">11</span>]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> size=<span class="keyword">sizeof</span>(a)/<span class="keyword">sizeof</span>(a[<span class="number">0</span>]);<span class="comment">//size=11</span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;size;i++)</span><br><span class="line">        s1=s1+a[i];</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;size<span class="number">-1</span>;i++)</span><br><span class="line">        s2=s2+i;</span><br><span class="line">        </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,s1-s2);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>​    当然,如果数的范围不确定,上面的思路全都行不通了,若可以使用辅助空间,我们可以申请n个额外空间,存放题干数组中每个值出现的个数,然后遍历题干中数组:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//v为思路1中的数组</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; helper(size);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> i = <span class="number">0</span>; i &lt; helper.size(); ++i)</span><br><span class="line">&#123;</span><br><span class="line">	helper[v[i]]++;</span><br><span class="line">	<span class="keyword">if</span> (helper[v[i]]==<span class="number">2</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; v[i] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="求出落单的元素"><a href="#求出落单的元素" class="headerlink" title="求出落单的元素"></a>求出落单的元素</h2><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><p>​    一个数组里除了某一个数字外,其他的数字都出现了两次。请写程序找出这个只出现一次的数字。</p>
+<h3 id="求解过程-1"><a href="#求解过程-1" class="headerlink" title="求解过程"></a>求解过程</h3><p>​    这个题目就很简单了,直接利用异或消去重复数即可:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v = &#123; <span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">7</span>,<span class="number">5</span>,<span class="number">20</span>,<span class="number">5</span> &#125;;</span><br><span class="line">	<span class="keyword">auto</span> apr = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> i : v)</span><br><span class="line">		apr ^= i;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; apr &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/02/%E5%B9%B6%E6%9F%A5%E9%9B%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -555,20 +655,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -612,12 +712,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">3k</span>
+    <span title="Symbols count total">5k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">3 mins.</span>
+    <span title="Reading time total">5 mins.</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.0.0
   </div>
