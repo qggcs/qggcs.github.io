@@ -62,7 +62,8 @@
 <meta property="og:description" content="题目描述​    给你一个十进制数,求该十进制数转换为2进制数后,1的个数有多少? 求解过程​    这题是很典型的位运算题,其实本质上是另一道题”求一个二进制数某位上是否为1”的演化,我这道题典型的思路就是利用移位操作和与运算的性质进行求解. 具体实现​    有三种思路,这里罗列出来: 思路1​    假设该数是一个int类型的,我们就可以用1从i(i从0开始)位开始,逐位左移,一直到32位为">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;11&#x2F;08&#x2F;U5H6KeRaci1MFEk.jpg">
-<meta property="og:updated_time" content="2019-11-08T13:46:29.187Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;11&#x2F;09&#x2F;FBuXeydQkahAlUp.jpg">
+<meta property="og:updated_time" content="2019-11-09T09:48:49.729Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;11&#x2F;08&#x2F;U5H6KeRaci1MFEk.jpg">
   <link rel="canonical" href="http://yoursite.com/2019/11/08/%E6%89%BE%E5%87%BA%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B01%E7%9A%84%E4%B8%AA%E6%95%B0/">
@@ -242,10 +243,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2019-11-08 21:26:14 / 修改时间：21:46:29" itemprop="dateCreated datePublished" datetime="2019-11-08T21:26:14+08:00">2019-11-08</time>
+              <time title="创建时间：2019-11-08 21:26:14" itemprop="dateCreated datePublished" datetime="2019-11-08T21:26:14+08:00">2019-11-08</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-09 17:48:49" itemprop="dateModified" datetime="2019-11-09T17:48:49+08:00">2019-11-09</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -264,7 +271,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>816</span>
+              <span>1.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -295,7 +302,14 @@
 
 
 
-<h3 id="终极思路"><a href="#终极思路" class="headerlink" title="终极思路"></a>终极思路</h3>
+<h3 id="终极思路"><a href="#终极思路" class="headerlink" title="终极思路"></a>终极思路</h3><p>​    给定一个数N,这个方法大致的思路就是不断地做N与(N-1)的与运算,结果为N的新值,直到N的新值为0为止,我们可以仔细想想,N与N-1进行与操作其实就是消去N最低位的1的过程,这样的操作做几次,N就有几个1:</p>
+<p>​    <img src="https://i.loli.net/2019/11/09/FBuXeydQkahAlUp.jpg" alt="批注 2019-11-09 174125.jpg"></p>
+<h4 id="具体实现-1"><a href="#具体实现-1" class="headerlink" title="具体实现"></a>具体实现</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">auto</span> count = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"请输入十进制数:"</span>;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; num;</span><br><span class="line">	<span class="keyword">while</span> (num != <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		num = num &amp; (num - <span class="number">1</span>);</span><br><span class="line">		count++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; count &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>​    当然这只是位运算的一小部分应用,很多内容还需要更多地去学习,比如思路2中的算法,如果是给的数为负数的话,估计c++就得考虑另一种方法了,因为带有符号位的话原来的逻辑就行不通了(java有&gt;&gt;&gt;逻辑右移233</p>
+
     </div>
 
     
@@ -358,7 +372,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求解过程"><span class="nav-number">2.</span> <span class="nav-text">求解过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体实现"><span class="nav-number">3.</span> <span class="nav-text">具体实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#思路1"><span class="nav-number">3.1.</span> <span class="nav-text">思路1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路2"><span class="nav-number">3.2.</span> <span class="nav-text">思路2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#终极思路"><span class="nav-number">3.3.</span> <span class="nav-text">终极思路</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求解过程"><span class="nav-number">2.</span> <span class="nav-text">求解过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体实现"><span class="nav-number">3.</span> <span class="nav-text">具体实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#思路1"><span class="nav-number">3.1.</span> <span class="nav-text">思路1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路2"><span class="nav-number">3.2.</span> <span class="nav-text">思路2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#终极思路"><span class="nav-number">3.3.</span> <span class="nav-text">终极思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#具体实现-1"><span class="nav-number">3.3.1.</span> <span class="nav-text">具体实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">4.</span> <span class="nav-text">后记</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -436,7 +450,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5 分钟</span>
+    <span title="站点阅读时长">6 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
   </div>
