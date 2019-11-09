@@ -62,7 +62,7 @@
 <meta property="og:description" content="背景​    最近在看陈越姥姥的数据结构，学习到并查集这个数据结构，大二上课的时候老师讲到这块直接跳过了(说考试不考，因为平时了解一些ACM或者算法题都有对并查集的考察，所以这次打算好好学习一下(笑) 并查集​    并查集，主要解决不相交集合的并操作，查询某两个元素是否处于同一集合。有一部分数学问题其实都可以抽象为对并查集的一系列操作。 ​    比如比较经典的电脑连通问题：  给定计算机N台，">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;11&#x2F;02&#x2F;1hxbiE5lwozNf23.jpg">
-<meta property="og:updated_time" content="2019-11-02T07:30:28.903Z">
+<meta property="og:updated_time" content="2019-11-09T09:57:07.904Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;11&#x2F;02&#x2F;1hxbiE5lwozNf23.jpg">
   <link rel="canonical" href="http://yoursite.com/2019/11/02/%E5%B9%B6%E6%9F%A5%E9%9B%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
@@ -242,10 +242,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2019-11-02 13:58:21 / 修改时间：15:30:28" itemprop="dateCreated datePublished" datetime="2019-11-02T13:58:21+08:00">2019-11-02</time>
+              <time title="创建时间：2019-11-02 13:58:21" itemprop="dateCreated datePublished" datetime="2019-11-02T13:58:21+08:00">2019-11-02</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-09 17:57:07" itemprop="dateModified" datetime="2019-11-09T17:57:07+08:00">2019-11-09</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -302,6 +308,8 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//集合的并运算,尽量把小的集合并入大的集合中</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Union</span><span class="params">(SetType S[],ElementType x,ElementType y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> rootX = Find(S, x);</span><br><span class="line">	<span class="keyword">int</span> rootY = Find(S, y);</span><br><span class="line">	<span class="keyword">if</span> (rootX!=<span class="number">-1</span> &amp;&amp; rootY!=<span class="number">-1</span>)<span class="comment">//两个集合均存在</span></span><br><span class="line">	&#123;</span><br><span class="line">		S[rootX].parent = S[rootY].parent;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>​    一个并查集就完成了</p>
+<a id="more"></a>
+
 <h2 id="并查集的优化"><a href="#并查集的优化" class="headerlink" title="并查集的优化"></a>并查集的优化</h2><h3 id="1、表示的优化"><a href="#1、表示的优化" class="headerlink" title="1、表示的优化"></a>1、表示的优化</h3><p>​    有时候做题的时候数据量很小（数据量级&lt;10<sup>2</sup>）,定义结构体就显得没有必要，data域完全可以由数组下标表示，数组的值为原来的parent域，这样处理的结果是<strong>Find</strong>函数的遍历过程完全可以不写：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">constexpr</span> <span class="keyword">auto</span> MAXSIZE = <span class="number">1000</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElementType; <span class="comment">//集合data类型</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> SetName;	<span class="comment">//集合的表示，以根节点下标表示</span></span><br><span class="line"><span class="keyword">typedef</span> ElementType SetType[MAXSIZE];</span><br></pre></td></tr></table></figure>
 

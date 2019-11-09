@@ -61,7 +61,7 @@
 <meta property="og:site_name" content="谭籽溢的万事屋">
 <meta property="og:description" content="题目描述​    1—1000这1000个数放在大小为1001的数组中，只有唯一的一个元素值重复，其他均只出现一次。每个数组元素只能访问一次，设计一个算法，将这个重复的元素找出来。不用辅助存储空间，能否设计一个算法实现？ 求解过程​    很自然地想到穷举法,嵌套循环就能很轻易地找出来,但显然O(n2)并不是最优解.有没有一种方法可以优化时间复杂度呢?答案当然是有的. ​    我们知道异或运算a">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-08T10:24:01.982Z">
+<meta property="og:updated_time" content="2019-11-09T09:56:55.265Z">
 <meta name="twitter:card" content="summary">
   <link rel="canonical" href="http://yoursite.com/2019/11/08/%E6%89%BE%E5%87%BA%E5%94%AF%E4%B8%80%E6%88%90%E5%AF%B9%E7%9A%84%E6%95%B0/">
 
@@ -240,10 +240,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2019-11-08 17:55:31 / 修改时间：18:24:01" itemprop="dateCreated datePublished" datetime="2019-11-08T17:55:31+08:00">2019-11-08</time>
+              <time title="创建时间：2019-11-08 17:55:31" itemprop="dateCreated datePublished" datetime="2019-11-08T17:55:31+08:00">2019-11-08</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-09 17:56:55" itemprop="dateModified" datetime="2019-11-09T17:56:55+08:00">2019-11-09</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -285,6 +291,8 @@
 <h2 id="求解过程"><a href="#求解过程" class="headerlink" title="求解过程"></a>求解过程</h2><p>​    很自然地想到穷举法,嵌套循环就能很轻易地找出来,但显然O(n<sup>2</sup>)并不是最优解.有没有一种方法可以优化时间复杂度呢?答案当然是有的.</p>
 <p>​    我们知道异或运算a^b=1,仅当a=b,所以利用异或运算就能轻易消去重复的数,但是根据题目描述,只有一对数重复,直接异或肯定是行不通的.所以,我们需要让凑出这样一个值,使得除了重复数k之外的所有数都成对,重复数k有3个:</p>
 <p>​        (1^2^…^k^…^k^…^1000)^(1^2^…^k^…^1000)=k</p>
+<a id="more"></a>
+
 <h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>​    利用异或的特性,实现代码就容易多了:</p>
 <h3 id="思路1"><a href="#思路1" class="headerlink" title="思路1"></a>思路1</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> random(x) (rand()%(x))</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//构造题干中的数组</span></span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">auto</span> size = <span class="number">1001</span>;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(size);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> i = <span class="number">0</span>; i &lt; v.size() - <span class="number">1</span>; ++i)</span><br><span class="line">		v[i] = i + <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">	srand(time(<span class="literal">nullptr</span>));</span><br><span class="line">	v[size - <span class="number">1</span>] = random(<span class="number">11</span>);</span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">auto</span> index = random(<span class="number">11</span>);</span><br><span class="line">	swap(v[index], v[v.size()<span class="number">-1</span>]);</span><br><span class="line">    <span class="comment">//打印该数组,方便查看</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span>&amp;x : v)</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; x &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    </span><br><span class="line">	<span class="comment">//寻找成对的数的过程</span></span><br><span class="line">	<span class="keyword">auto</span> opr = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> i = <span class="number">1</span>; i &lt;= v.size()<span class="number">-1</span>; ++i)</span><br><span class="line">		opr = opr ^ i;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> i : v)</span><br><span class="line">		opr = opr ^ i;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; opr &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
