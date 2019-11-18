@@ -62,7 +62,7 @@
 <meta property="og:description" content="题目描述​    给出一个二进制数，将该二进制数的偶数位和奇数位互换，例：输入1001，输出0110 求解过程​    一般的想法就是遍历这个二进制数的每一位(存于char类型数组中)，然后做两两交换，时间复杂度O(N),既然涉及到二进制数，我们应该可以用位运算来实现。 ​    我们知道，一个数和11111…11做&amp;amp;运算的结果是他本身，所以用于本题，可以分别抽取出偶数位上的数和奇数位上的">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;11&#x2F;16&#x2F;rVDYT96yuMoA2pt.jpg">
-<meta property="og:updated_time" content="2019-11-17T07:30:22.440Z">
+<meta property="og:updated_time" content="2019-11-18T11:34:03.186Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;11&#x2F;16&#x2F;rVDYT96yuMoA2pt.jpg">
   <link rel="canonical" href="http://yoursite.com/2019/11/16/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E5%A5%87%E6%95%B0%E4%BD%8D%E5%81%B6%E6%95%B0%E4%BD%8D%E7%9A%84%E4%BA%A4%E6%8D%A2/">
@@ -250,7 +250,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-17 15:30:22" itemprop="dateModified" datetime="2019-11-17T15:30:22+08:00">2019-11-17</time>
+                <time title="修改时间：2019-11-18 19:34:03" itemprop="dateModified" datetime="2019-11-18T19:34:03+08:00">2019-11-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -298,6 +298,8 @@
         <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>​    给出一个二进制数，将该二进制数的偶数位和奇数位互换，例：输入1001，输出0110</p>
 <h2 id="求解过程"><a href="#求解过程" class="headerlink" title="求解过程"></a>求解过程</h2><p>​    一般的想法就是遍历这个二进制数的每一位(存于char类型数组中)，然后做两两交换，时间复杂度O(N),既然涉及到二进制数，我们应该可以用位运算来实现。</p>
 <p>​    我们知道，一个数和11111…11做&amp;运算的结果是他本身，所以用于本题，可以分别抽取出偶数位上的数和奇数位上的数，移位以后做异或运算，就可以得到结果了。以1001为例子：</p>
+<a id="more"></a>
+
 <img src="https://i.loli.net/2019/11/16/rVDYT96yuMoA2pt.jpg" alt="批注 2019-11-16 111907.jpg" style="zoom:150%;" />
 
 
